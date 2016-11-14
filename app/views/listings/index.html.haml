@@ -1,0 +1,17 @@
+%table.table
+
+  - @listing.each do |listing|
+    %tr
+      %td
+        = link_to listing.title, listing_path(listing.id)
+        %br
+      %td
+        -if listing.picture
+          = image_tag listing.picture, width: 300
+      %td
+        ="#{listing.price}€"
+      %td
+        = link_to "Infos" , listing_path(listing.id), class: 'btn btn-success'
+        %br
+      %td
+        = link_to "Edit", edit_listing_path(listing.id), class: 'btn btn-success'
