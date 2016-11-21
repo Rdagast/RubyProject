@@ -3,4 +3,10 @@
     .col-xs-2
       %h1.title= link_to "Listings", root_path
     .col-xs-10.pull-right
+      = link_to "Create My Listing", new_listing_path(), class:'btn btn-success pull-right'
       = locale_select(I18n.locale)
+      - if current_user
+        = link_to "My account", account_messages_path, class:'my-account pull-right'
+        = link_to "Sign out", destroy_user_session_path(), class:'my-account pull-right', data: {method: :delete}
+      - else
+        = link_to "Log in", new_user_session_path() ,class:'my-account pull-right'

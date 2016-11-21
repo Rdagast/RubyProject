@@ -1,0 +1,14 @@
+= form_for @listing, multipart: true do |f|
+  - if @listing.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@listing.errors.count, "error")
+        prohibited this listing from being saved:
+      %ul
+        - @listing.errors.full_messages.each do |message|
+          %li= message
+  .input-field
+    = f.label :name
+    = f.text_field :name, placeholder: 'Ici'
+  .actions
+    = f.submit 'Envoyer', :class => 'waves-effect waves-light btn'

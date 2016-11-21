@@ -1,0 +1,25 @@
+.row
+  .col-xs-6.well
+    = form_for @user, url: account_profile_index_path, method: "post" do |f|
+      .input-field.form-group
+        = f.label :email
+        = f.text_field :email, placeholder: 'Ici', class: 'form-control'
+      .input-field.form-group
+        = f.label :first_name
+        = f.text_field :first_name, placeholder: 'Ici', class: 'form-control'
+      .input-field.form-group
+        = f.label :last_name
+        = f.text_field :last_name, placeholder: 'Ici', class: 'form-control'
+      .actions
+        = f.submit 'Save', :class => 'btn btn-primary pull-right'
+  .col-xs-1
+  .col-xs-5.well
+    = form_for @user, url: account_profile_index_path do |f|
+      .input-field.form-group
+        = f.label :password
+        = f.text_field :password, placeholder: 'password', class: 'form-control'
+      .input-field.form-group
+        = f.label :password_confirmation
+        = f.text_field :password_confirmation, placeholder: 'password', class: 'form-control'
+      .actions
+        = f.submit 'Save', :class => 'btn btn-primary pull-right'

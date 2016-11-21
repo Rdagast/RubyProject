@@ -1,14 +1,14 @@
 body {
-  background-color: #fff;
+  background-color: #fff !important;
   &.home {
-    background: url(asset-path('bg_homepage.jpg')) center center fixed;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url(asset-path('bg_homepage.jpg')) center center fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
   }
 }
 h1, h2, h3 {
   font-family: 'Dosis', sans-serif;
-  color: #000;
+  color: #000 !important;
 }
 table tr td {
   color: #000;
@@ -129,9 +129,19 @@ form.busy {
     height: 200px;
   }
 }
+.nav-tabs>li>a{
+  color: #2b3e50 !important;
+}
+.nav-tabs>li>a:hover{
+  color: white !important;
+}
+.nav-tabs>li.active>a{
+  color: white !important;
+}
+
 .nav-tabs {
   margin-top: 90px;
-  border-bottom: 1px solid #2b3e50;
+  border-bottom: 1px solid #2b3e50 !important;
   padding-bottom: 10px;
   li a {
     color: #2b3e50;

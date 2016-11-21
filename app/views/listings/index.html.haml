@@ -1,17 +1,21 @@
-%table.table
+- @listing.each do |listing|
 
-  - @listing.each do |listing|
-    %tr
-      %td
-        = link_to listing.title, listing_path(listing.id)
-        %br
-      %td
-        -if listing.picture
-          = image_tag listing.picture, width: 300
-      %td
-        ="#{listing.price}€"
-      %td
-        = link_to "Infos" , listing_path(listing.id), class: 'btn btn-success'
-        %br
-      %td
-        = link_to "Edit", edit_listing_path(listing.id), class: 'btn btn-success'
+  .row
+    %div.col-xs-12.listing
+      %h3
+        =link_to "#{listing.title}", listing_path(listing.id)
+      %p
+        = "#{listing.created_at}"
+        = link_to listing.category.name, listings_path(category_id: listing.category_id), class:'category'
+        %span.badge
+        .row
+        %div.col-xs-2
+          -if listing.picture
+            = image_tag listing.picture, width: 100
+        %div.col-xs-10
+          %p
+            ="#{listing.description}"
+            %div.clearfix
+            %span.price
+              ="#{listing.price}€"
+              = link_to "Contact" ,listing_contact_path(listing.id), data:{do: "showContactModal", user:"#{current_user.try(:id)}", id: listing.id}, class: 'btn btn-primary pull-right'

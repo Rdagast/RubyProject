@@ -1,8 +1,10 @@
 class ListingsController < ApplicationController
   def index
-    @listing= Listing.all
+    # @listing= Listing.all
+    @listing = Listing.search(params)
   end
   def new
+    redirect_to new_user_session_path unless current_user
     @listing = Listing.new
   end
   def create
@@ -22,6 +24,11 @@ class ListingsController < ApplicationController
   end
   def show
     @listing = Listing.find(params[:id])
+  end
+  def contact
+    Contact.generate(params,current_user)
+
+    render nothing: true
   end
   def edit
     @listing = Listing.find(params[:id])

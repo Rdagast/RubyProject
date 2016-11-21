@@ -1,5 +1,32 @@
 %h2= "Detail view for Listing"
+
 %table
   %tr
     %td= image_tag @listing.picture, width:300
+  %tr
     %td= @listing.title
+.col-xs-12.listing
+  %a{href: listing_path(@listing)}
+    = image_tag @listing
+.col-xs-12
+  = form_tag account_comments_path do
+    %textarea{name: 'comment[content]'}
+    %input{name: 'comment[listing_id]', value: @listing.id, type: "hidden"}
+    = submit_tag 'submit', class: 'btn btn-success'
+
+.col-xs-12
+  %h1
+    = "Comment"
+  .col-xs-12
+    %table.table
+      %thead
+        %tr
+          %th= "Name"
+          %th= "Content"
+      %tbody
+        - @listing.comments.each do |comment|
+          %tr
+            %td
+              = comment.user.full_name
+            %td
+              = comment.content

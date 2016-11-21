@@ -1,27 +1,34 @@
-= form_for @listing, multipart: true do |f|
-  - if @listing.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(@listing.errors.count, "error")
-        prohibited this listing from being saved:
-      %ul
-        - @listing.errors.full_messages.each do |message|
-          %li= message
-  .input-field
-    = f.label :title
-    = f.text_field :title, placeholder: 'Ici'
-  .input-field
-    = f.label :description
-    = f.text_area :description, :class => 'materialize-textarea'
-  .input-field
-    = f.label :picture
-    = f.file_field :picture
-  .input-field
-    = f.label :price
-    = f.text_field :price
-  .input-field
-    %select{name: 'listing[category_id]'}
-      - Category.all.each do |cat|
-        %option{value: cat.id}= cat.name
-  .actions
-    = f.submit 'Envoyer', :class => 'waves-effect waves-light btn'
+.row
+  %h2
+    %div.col-xs-8.col-xs-offset-2
+      = "New Listing"
+.row
+  .col-xs-8.col-xs-offset-2.well
+    = form_for @listing, multipart: true do |f|
+      - if @listing.errors.any?
+        #error_explanation
+          %h2
+            = pluralize(@listing.errors.count, "error")
+            prohibited this listing from being saved:
+          %ul
+            - @listing.errors.full_messages.each do |message|
+              %li= message
+
+      .input-field.form-group
+        = f.label :title
+        = f.text_field :title, placeholder: 'Ici', class: 'form-control'
+      .input-field.form-group
+        = f.label :description
+        = f.text_area :description, :class => 'materialize-textarea form-control'
+      .input-field.form-group
+        = f.label :picture
+        = f.file_field :picture, class: 'form-control'
+      .input-field.form-group
+        = f.label :price
+        = f.text_field :price, class: 'form-control'
+      .input-field.form-group
+        %select{name: 'listing[category_id]' , class: 'form-control'}
+          - Category.all.each do |cat|
+            %option{value: cat.id}= cat.name
+      .actions
+        = f.submit 'Envoyer', :class => 'btn btn-primary pull-right'
