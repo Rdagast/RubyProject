@@ -1,5 +1,5 @@
 development:
-  database: listings_developpment
+  database: listings_development
   adapter: postgresql
   username: postgres
   password: password
@@ -7,7 +7,7 @@ development:
   port: 5432
 
 production:
-  database: listings_developpment
+  database: listings_production
   adapter: postgresql
   username: postgres
   password: password
@@ -15,7 +15,7 @@ production:
   port: 5432
 
 test:
-  database: listings_developpment
+  database: listings_test
   adapter: postgresql
   username: postgres
   password: password
